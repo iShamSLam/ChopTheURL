@@ -1,0 +1,22 @@
+{% extends 'links/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <a href="{% url 'links:index' %}" class="btn btn-primary">
+        <i class="fas fa-align-left"></i>
+        Show others
+    </a>
+    <h1 class="mt-2">Put link that you want to cut to this field</h1>
+    <hr class="mt-0 mb-4">
+    <form
+            method="post"
+            novalidate
+            action="{% url 'links:create' %}"
+    >
+        {% csrf_token %}
+        {{ form.orig_link }}
+        <button type="submit" class="btn btn-success">Chop it and save</button>
+    </form>
+{% endblock %}
+</body>
+</html>

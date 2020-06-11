@@ -1,0 +1,11 @@
+li {
+    list-style-type: none;
+}
+* {
+    margin: 10px;
+}
+
+#card-shadow {
+    border-radius: 15px;
+    box-shadow: 9px 11px 10px 4px rgba(0,0,0,0.36);
+}
