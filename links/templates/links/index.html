@@ -1,0 +1,48 @@
+{% extends 'links/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="row">
+        <a href="{% url 'links:new' %}" class="btn btn-outline-primary">
+            <i class="fas fa-plus"></i>
+            Create new one
+        </a>
+    </div>
+    <div class="justify-content-center">
+        <h1 class="mt-2">All links</h1>
+    </div>
+    <hr class="mt-0 mb-4">
+    {% if links_list %}
+        <ul class="justify-content-center">
+            {% for link in links_list %}
+                <li>
+                    <div class="card" id="card-shadow">
+                        <div class="card-header">
+                            <span class="badge badge-info">
+                                <h5>
+                                    {{ link.orig_link }}
+                                </h5>
+                            </span>
+                            <p class="font-weight-normal">Used {{ link.follow_quantity }} times</p>
+                        </div>
+                        <div class="card-body">
+                            <a class="card-title" href="http://127.0.0.1:8000/links/{{ link.tiny_link }}">http://127.0.0.1:8000/links/{{ link.tiny_link }}</a>
+                            <a href="{% url 'links:open' link.tiny_link %}" class="btn btn-primary">
+                                <i class="fas fa-link"></i>
+                                OPEN
+                            </a>
+                            <a href="{% url 'links:delete' link.id %}" class="btn btn-danger">
+                                <i class="far fa-trash-alt"></i>
+                                REMOVE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No links available</p>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
